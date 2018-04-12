@@ -1,4 +1,4 @@
-# Hangman.Dictionary
+# Hangman Dictionary
 
 Dictionary for the Hangman game. Returns a random word in lowercase.
 
