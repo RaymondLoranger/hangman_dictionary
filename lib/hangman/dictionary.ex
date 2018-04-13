@@ -23,5 +23,6 @@ defmodule Hangman.Dictionary do
       iex> Dictionary.random_word() =~ ~r/^[a-z]+$/
       true
   """
-  defdelegate random_word(), to: Words
+  @spec random_word :: String.t()
+  def random_word, do: Agent.get(Words, &Enum.random/1)
 end
