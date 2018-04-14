@@ -12,7 +12,7 @@ by adding `hangman_dictionary` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:hangman_dictionary, "~> 0.1.0"}
+    {:hangman_dictionary, "~> 0.1"}
   ]
 end
 ```
