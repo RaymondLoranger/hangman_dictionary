@@ -1,6 +1,4 @@
 defmodule Hangman.Dictionary.App do
-  @moduledoc false
-
   use Application
 
   alias __MODULE__
