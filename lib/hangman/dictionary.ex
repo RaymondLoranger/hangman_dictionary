@@ -26,7 +26,7 @@ defmodule Hangman.Dictionary do
       ...>   Dictionary.random_word(),
       ...>   Dictionary.random_word()
       ...> ]
-      ...> |> Enum.all?(&(&1 =~ ~r/^[a-z]+$/))
+      ...> |> Enum.all?(& &1 =~ ~r/^[a-z]+$/)
       true
   """
   @spec random_word :: String.t()
