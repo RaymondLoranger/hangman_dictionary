@@ -7,7 +7,7 @@ defmodule Hangman.Dictionary do
   @course_ref Application.get_env(@app, :course_ref)
 
   @moduledoc """
-  Dictionary for the Hangman game. Returns a random word in lowercase.
+  Dictionary for the _Hangman Game_. Returns a random word in lowercase.
 
   ##### #{@course_ref}
   """
