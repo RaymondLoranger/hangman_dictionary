@@ -20,7 +20,13 @@ defmodule Hangman.Dictionary do
   ## Examples
 
       iex> alias Hangman.Dictionary
-      iex> Dictionary.random_word() =~ ~r/^[a-z]+$/
+      iex> [
+      ...>   Dictionary.random_word(),
+      ...>   Dictionary.random_word(),
+      ...>   Dictionary.random_word(),
+      ...>   Dictionary.random_word()
+      ...> ]
+      ...> |> Enum.all?(&(&1 =~ ~r/^[a-z]+$/))
       true
   """
   @spec random_word :: String.t()
