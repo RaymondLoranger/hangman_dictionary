@@ -1,4 +1,4 @@
-defmodule Hangman.Dictionary.Top do
+defmodule Hangman.Dictionary.TopSup do
   use Application
 
   alias __MODULE__
@@ -10,6 +10,6 @@ defmodule Hangman.Dictionary.Top do
       # Child spec relying on use Agent...
       {Words, :ok}
     ]
-    |> Supervisor.start_link(name: Top, strategy: :one_for_one)
+    |> Supervisor.start_link(name: TopSup, strategy: :one_for_one)
   end
 end

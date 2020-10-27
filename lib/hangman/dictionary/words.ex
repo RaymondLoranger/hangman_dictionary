@@ -6,7 +6,7 @@ defmodule Hangman.Dictionary.Words do
 
   alias __MODULE__
 
-  @words_path Application.get_env(@app, :words_path)
+  @words_path get_env(:words_path)
 
   @doc """
   Starts an agent.
