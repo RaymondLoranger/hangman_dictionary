@@ -1,4 +1,4 @@
-defmodule Hangman.Dictionary.Words do
+defmodule Hangman.Dictionary.WordsAgent do
   @moduledoc "Agent that loads a list of words from an external source."
 
   use Agent
@@ -13,13 +13,13 @@ defmodule Hangman.Dictionary.Words do
 
   ## Examples
 
-      iex> alias Hangman.Dictionary.Words
-      iex> {:error, {:already_started, agent}} = Words.start_link(:ok)
-      iex> is_pid(agent) and agent == Process.whereis(Words)
+      iex> alias Hangman.Dictionary.WordsAgent
+      iex> {:error, {:already_started, agent}} = WordsAgent.start_link(:ok)
+      iex> is_pid(agent) and agent == Process.whereis(WordsAgent)
       true
   """
   @spec start_link(term) :: Agent.on_start()
-  def start_link(:ok), do: Agent.start_link(&init/0, name: Words)
+  def start_link(:ok), do: Agent.start_link(&init/0, name: WordsAgent)
 
   ## Private functions
 
@@ -28,8 +28,8 @@ defmodule Hangman.Dictionary.Words do
 
   # ## Examples
 
-  #     iex> alias Hangman.Dictionary.Words
-  #     iex> words = Words.init()
+  #     iex> alias Hangman.Dictionary.WordsAgent
+  #     iex> words = WordsAgent.init()
   #     iex> {length(words), is_list(words)}
   #     {8881, true}
   # """
