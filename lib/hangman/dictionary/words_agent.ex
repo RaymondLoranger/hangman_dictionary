@@ -1,5 +1,5 @@
 defmodule Hangman.Dictionary.WordsAgent do
-  @moduledoc "Agent that loads a list of words from an external source."
+  @moduledoc "Agent that loads a list of words from an external file."
 
   use Agent
   use PersistConfig
