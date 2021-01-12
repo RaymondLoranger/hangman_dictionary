@@ -36,7 +36,7 @@ defmodule Hangman.Dictionary.WordsAgent do
   @spec init :: [String.t()]
   defp init do
     for word <- File.stream!(@words_path) do
-      word |> String.trim() |> String.downcase()
+      String.trim(word) |> String.downcase()
     end
   end
 end
