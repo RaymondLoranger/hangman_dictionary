@@ -25,16 +25,7 @@ defmodule Hangman.Dictionary.WordsAgent do
 
   ## Private functions
 
-  # @doc """
   # Returns a list of lowercase words read from an external file.
-
-  # ## Examples
-
-  #     iex> alias Hangman.Dictionary.WordsAgent
-  #     iex> words = WordsAgent.init()
-  #     iex> {length(words), is_list(words)}
-  #     {8881, true}
-  # """
   @spec init :: [String.t()]
   defp init do
     for word <- File.stream!(@words_path) do
