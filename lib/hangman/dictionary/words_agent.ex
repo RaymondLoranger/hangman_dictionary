@@ -1,5 +1,7 @@
 defmodule Hangman.Dictionary.WordsAgent do
-  @moduledoc "Agent that loads a list of words from an external file."
+  @moduledoc """
+  Agent that loads a list of words from an external file.
+  """
 
   use Agent
   use PersistConfig
@@ -9,7 +11,7 @@ defmodule Hangman.Dictionary.WordsAgent do
   @words_path get_env(:words_path)
 
   @doc """
-  Starts an agent.
+  Starts an agent that loads a list of words from an external file.
 
   ## Examples
 

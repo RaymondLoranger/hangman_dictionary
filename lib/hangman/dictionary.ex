@@ -20,9 +20,14 @@ defmodule Hangman.Dictionary do
       ...>   Dictionary.random_word(),
       ...>   Dictionary.random_word(),
       ...>   Dictionary.random_word(),
-      ...>   Dictionary.random_word()
+      ...>   Dictionary.random_word(),
+      ...>   "résumé",
+      ...>   "jalapeño",
+      ...>   "noël",
+      ...>   "tête",
+      ...>   "façade"
       ...> ]
-      ...> |> Enum.all?(& &1 =~ ~r/^[a-z]+$/)
+      ...> |> Enum.all?(& &1 =~ ~r/^[[:lower:]]+$/u)
       true
 
       iex> alias Hangman.Dictionary.WordsAgent
