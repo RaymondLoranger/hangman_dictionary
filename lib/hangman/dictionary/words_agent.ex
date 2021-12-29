@@ -21,7 +21,7 @@ defmodule Hangman.Dictionary.WordsAgent do
       true
   """
   @spec start_link(term) :: Agent.on_start()
-  def start_link(:ok), do: Agent.start_link(&init/0, name: WordsAgent)
+  def start_link(:ok = _arg), do: Agent.start_link(&init/0, name: WordsAgent)
 
   ## Private functions
 
