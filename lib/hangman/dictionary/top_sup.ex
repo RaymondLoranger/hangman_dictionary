@@ -4,6 +4,7 @@ defmodule Hangman.Dictionary.TopSup do
   alias __MODULE__
   alias Hangman.Dictionary.WordsAgent
 
+  # @impl Application
   @spec start(Application.start_type(), term) :: {:ok, pid}
   def start(_start_type, :ok = _start_args) do
     [
