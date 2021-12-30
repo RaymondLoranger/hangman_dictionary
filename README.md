@@ -1,6 +1,6 @@
 # Hangman Dictionary
 
-Dictionary for the _Hangman Game_. Returns a random word in lowercase.
+Dictionary for the _Hangman Game_. Returns a random word.
 
 ##### Based on the course [Elixir for Programmers](https://codestool.coding-gnome.com/courses/elixir-for-programmers) by Dave Thomas.
 

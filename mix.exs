@@ -4,7 +4,7 @@ defmodule Hangman.Dictionary.Mixfile do
   def project do
     [
       app: :hangman_dictionary,
-      version: "0.1.22",
+      version: "0.1.23",
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
       name: "Hangman Dictionary",
@@ -21,13 +21,19 @@ defmodule Hangman.Dictionary.Mixfile do
 
   defp description do
     """
-    Dictionary for the Hangman Game. Returns a random word in lowercase.
+    Dictionary for the Hangman Game. Returns a random word.
     """
   end
 
   defp package do
     [
-      files: ["lib", "mix.exs", "README*", "assets/words.txt"],
+      files: [
+        "lib",
+        "mix.exs",
+        "README*",
+        "config/persist*.exs",
+        "assets/**/*words*.txt"
+      ],
       maintainers: ["Raymond Loranger"],
       licenses: ["MIT"],
       links: %{"GitHub" => source_url()}

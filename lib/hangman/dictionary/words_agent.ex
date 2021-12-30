@@ -1,6 +1,6 @@
 defmodule Hangman.Dictionary.WordsAgent do
   @moduledoc """
-  Agent that loads a list of words from an external file.
+  Agent that loads a list of words from external files.
   """
 
   use Agent
@@ -8,10 +8,10 @@ defmodule Hangman.Dictionary.WordsAgent do
 
   alias __MODULE__
 
-  @words_path get_env(:words_path)
+  @paths get_env(:wildcard_paths)
 
   @doc """
-  Starts an agent that loads a list of words from an external file.
+  Starts an agent that loads a list of words from external files.
 
   ## Examples
 
@@ -25,11 +25,15 @@ defmodule Hangman.Dictionary.WordsAgent do
 
   ## Private functions
 
-  # Returns a list of lowercase words read from an external file.
+  # Returns a list of words from (all) external files. All words must contain
+  # letters between a and z, that is, be in lowercase without accented letters.
   @spec init :: [String.t()]
   defp init do
-    for word <- File.stream!(@words_path) do
-      String.trim(word) |> String.downcase()
-    end
+    Enum.flat_map(@paths, &words/1)
+  end
+
+  # Returns a list of words from external file `path`.
+  defp words(path) do
+    for word <- File.stream!(path), do: String.trim(word)
   end
 end
