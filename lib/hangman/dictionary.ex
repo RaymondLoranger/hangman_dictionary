@@ -16,14 +16,10 @@ defmodule Hangman.Dictionary do
   ## Examples
 
       iex> alias Hangman.Dictionary
-      iex> [
-      ...>   Dictionary.random_word(),
-      ...>   Dictionary.random_word(),
-      ...>   Dictionary.random_word(),
-      ...>   Dictionary.random_word()
-      ...> ]
-      ...> |> Enum.all?(& &1 =~ ~r/^[a-z]+$/)
-      true
+      iex> for _ <- 0..99, uniq: true do
+      iex>   Dictionary.random_word() =~ ~r/^[a-z]+$/
+      iex> end
+      [true]
 
       iex> alias Hangman.Dictionary.WordsAgent
       iex> words = Agent.get(WordsAgent, & &1)
