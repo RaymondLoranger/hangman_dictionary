@@ -26,7 +26,7 @@ defmodule Hangman.Dictionary.WordsAgent do
   ## Private functions
 
   # Returns a list of words from (all) external files. All words must contain
-  # letters between a and z, that is, be in lowercase without accented letters.
+  # letters from `a` to `z`, i.e. be in lowercase without accented characters.
   @spec init :: [String.t()]
   defp init do
     Enum.flat_map(@paths, &words/1)
