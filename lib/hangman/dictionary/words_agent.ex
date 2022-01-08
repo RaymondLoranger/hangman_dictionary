@@ -7,8 +7,11 @@ defmodule Hangman.Dictionary.WordsAgent do
   use PersistConfig
 
   alias __MODULE__
+  alias Hangman.Dictionary
 
-  @paths get_env(:wildcard_paths)
+  @wildcard get_env(:wildcard)
+  @matches Path.wildcard(@wildcard)
+  @paths Enum.map(@matches, &Path.expand/1)
 
   @doc """
   Starts an agent that loads a list of words from external files.
@@ -27,12 +30,13 @@ defmodule Hangman.Dictionary.WordsAgent do
 
   # Returns a list of words from (all) external files. All words must contain
   # letters from `a` to `z`, i.e. be in lowercase without accented characters.
-  @spec init :: [String.t()]
+  @spec init :: [Dictionary.word()]
   defp init do
     Enum.flat_map(@paths, &words/1)
   end
 
   # Returns a list of words from external file `path`.
+  @spec words(binary) :: [Dictionary.word()]
   defp words(path) do
     for word <- File.stream!(path), do: String.trim(word)
   end

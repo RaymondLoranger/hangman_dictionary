@@ -10,8 +10,11 @@ defmodule Hangman.Dictionary do
 
   alias __MODULE__.WordsAgent
 
+  @typedoc "A word with letters from a to z"
+  @type word :: String.t()
+
   @doc """
-  Returns a random word from the dictionary.
+  Returns a random word from the dictionary agent.
 
   ## Examples
 
@@ -26,17 +29,17 @@ defmodule Hangman.Dictionary do
       iex> Enum.all?(words, & &1 =~ ~r/^[a-z]+$/)
       true
   """
-  @spec random_word :: String.t()
+  @spec random_word :: word
   def random_word, do: Agent.get(WordsAgent, &Enum.random/1)
 
   @doc """
-  Returns the number of words in the dictionary.
+  Returns the number of words in the dictionary agent.
 
   ## Examples
 
       iex> alias Hangman.Dictionary
-      iex> Dictionary.word_count > 0
-      true
+      iex> Dictionary.word_count
+      9133
   """
   @spec word_count :: pos_integer
   def word_count, do: Agent.get(WordsAgent, &length/1)
