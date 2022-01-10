@@ -24,14 +24,14 @@ defmodule Hangman.Dictionary.WordsAgent do
       true
   """
   @spec start_link(term) :: Agent.on_start()
-  def start_link(:ok = _arg), do: Agent.start_link(&init/0, name: WordsAgent)
+  def start_link(:ok = _arg), do: Agent.start_link(&words/0, name: WordsAgent)
 
   ## Private functions
 
   # Returns a list of words from (all) external files. All words must contain
   # letters from `a` to `z`, i.e. be in lowercase without accented characters.
-  @spec init :: [Dictionary.word()]
-  defp init do
+  @spec words :: [Dictionary.word()]
+  defp words do
     Enum.flat_map(@paths, &words/1)
   end
 
