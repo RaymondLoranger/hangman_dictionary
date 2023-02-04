@@ -1,6 +1,6 @@
 defmodule Hangman.Dictionary.WordsAgent do
   @moduledoc """
-  Agent that loads a list of words from external files.
+  An agent process that loads a list of words from external files.
   """
 
   use Agent
@@ -14,7 +14,7 @@ defmodule Hangman.Dictionary.WordsAgent do
   @paths Enum.map(@matches, &Path.expand/1)
 
   @doc """
-  Starts an agent that loads a list of words from external files.
+  Spawns an agent process that loads a list of words from external files.
 
   ## Examples
 

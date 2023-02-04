@@ -39,7 +39,7 @@ defmodule Hangman.Dictionary do
 
       iex> alias Hangman.Dictionary
       iex> Dictionary.word_count
-      9133
+      65042
   """
   @spec word_count :: pos_integer
   def word_count, do: Agent.get(WordsAgent, &length/1)
