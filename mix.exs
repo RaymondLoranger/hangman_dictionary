@@ -4,7 +4,7 @@ defmodule Hangman.Dictionary.Mixfile do
   def project do
     [
       app: :hangman_dictionary,
-      version: "0.1.33",
+      version: "0.1.34",
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
       name: "Hangman Dictionary",
@@ -43,7 +43,7 @@ defmodule Hangman.Dictionary.Mixfile do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger],
+      extra_applications: [:logger, :observer, :wx, :runtime_tools],
       mod: {Hangman.Dictionary.TopSup, :ok}
     ]
   end
