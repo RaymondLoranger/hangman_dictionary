@@ -38,6 +38,10 @@ we
 ye
 ace
 act
+awe
+awl
+awn
+aye
 add
 ado
 ads
@@ -68,10 +72,6 @@ asp
 ass
 ate
 ave
-awe
-awl
-awn
-aye
 bad
 bag
 bah

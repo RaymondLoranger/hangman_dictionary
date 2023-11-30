@@ -1,3 +1,4 @@
 import Config
 
-config :hangman_dictionary, wildcard: "./assets/**/*words*.txt"
+root_dir = File.cwd!()
+config :hangman_dictionary, wildcard: "#{root_dir}/assets/**/*words*.txt"

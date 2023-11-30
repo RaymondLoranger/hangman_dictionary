@@ -54,8 +54,8 @@ defmodule Hangman.Dictionary do
   ## Examples
 
       iex> alias Hangman.Dictionary
-      iex> Dictionary.shortest_words() |> Enum.take(9)
-      ["a", "i", "ad", "am", "an", "as", "at", "ax", "be"]
+      iex> Dictionary.shortest_words() |> Enum.take(49) |> Enum.take(-10)
+      ["act", "add", "ado", "ads", "adz", "aft", "age", "ago", "aid", "ail"]
 
       iex> alias Hangman.Dictionary
       iex> Dictionary.shortest_words(2)
@@ -66,7 +66,7 @@ defmodule Hangman.Dictionary do
     Agent.get(WordsAgent, fn words ->
       words
       |> Stream.filter(&(byte_size(&1) < ceil))
-      |> Enum.sort_by(&{byte_size(&1), String.first(&1)})
+      |> Enum.sort_by(&{byte_size(&1), &1})
     end)
   end
 
@@ -81,22 +81,36 @@ defmodule Hangman.Dictionary do
   ## Examples
 
       iex> alias Hangman.Dictionary
-      iex> Dictionary.longest_words() |> Enum.take(5)
+      iex> Dictionary.longest_words() |> Enum.take(9)
       [
         "telecommunications (18)",
         "characterization (16)",
         "responsibilities (16)",
         "sublimedirectory (16)",
-        "characteristics (15)"
+        "characteristics (15)",
+        "confidentiality (15)",
+        "congratulations (15)",
+        "instrumentation (15)",
+        "internationally (15)"
       ]
 
       iex> alias Hangman.Dictionary
-      iex> Dictionary.longest_words(15)
+      iex> Dictionary.longest_words(14)
       [
         "telecommunications (18)",
         "characterization (16)",
         "responsibilities (16)",
-        "sublimedirectory (16)"
+        "sublimedirectory (16)",
+        "characteristics (15)",
+        "confidentiality (15)",
+        "congratulations (15)",
+        "instrumentation (15)",
+        "internationally (15)",
+        "pharmaceuticals (15)",
+        "recommendations (15)",
+        "representations (15)",
+        "representatives (15)",
+        "troubleshooting (15)"
       ]
   """
   @spec longest_words(non_neg_integer) :: [String.t()]
@@ -105,7 +119,7 @@ defmodule Hangman.Dictionary do
       words
       |> Stream.filter(&(byte_size(&1) > floor))
       |> Stream.map(&"#{&1} (#{byte_size(&1)})")
-      |> Enum.sort_by(&{-byte_size(&1), String.first(&1)})
+      |> Enum.sort_by(&{-byte_size(&1), &1})
     end)
   end
 
@@ -121,6 +135,10 @@ defmodule Hangman.Dictionary do
       iex> alias Hangman.Dictionary
       iex> Dictionary.words_of_length(16)
       ["characterization", "responsibilities", "sublimedirectory"]
+
+      iex> alias Hangman.Dictionary
+      iex> Dictionary.words_of_length(3) |> Enum.take(10)
+      ["ace", "act", "add", "ado", "ads", "adz", "aft", "age", "ago", "aid"]
   """
   @spec words_of_length(pos_integer) :: [word]
   def words_of_length(word_length) do

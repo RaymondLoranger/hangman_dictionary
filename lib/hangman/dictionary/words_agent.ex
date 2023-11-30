@@ -10,8 +10,7 @@ defmodule Hangman.Dictionary.WordsAgent do
   alias Hangman.Dictionary
 
   @wildcard get_env(:wildcard)
-  @matches Path.wildcard(@wildcard)
-  @paths Enum.map(@matches, &Path.expand/1)
+  @paths Path.wildcard(@wildcard)
 
   @doc """
   Spawns an agent process that loads a list of words from external files.
