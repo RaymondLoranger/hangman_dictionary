@@ -23,7 +23,7 @@ defmodule Hangman.Dictionary.WordsAgent do
       true
   """
   @spec start_link(term) :: Agent.on_start()
-  def start_link(:ok = _arg), do: Agent.start_link(&words/0, name: WordsAgent)
+  def start_link(_arg = :ok), do: Agent.start_link(&words/0, name: WordsAgent)
 
   ## Private functions
 
@@ -35,7 +35,7 @@ defmodule Hangman.Dictionary.WordsAgent do
   end
 
   # Returns a list of words from external file `path`.
-  @spec words(binary) :: [Dictionary.word()]
+  @spec words(Path.t()) :: [Dictionary.word()]
   defp words(path) do
     for word <- File.stream!(path), do: String.trim(word)
   end

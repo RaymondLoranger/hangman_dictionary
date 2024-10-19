@@ -39,7 +39,7 @@ defmodule Hangman.Dictionary do
 
       iex> alias Hangman.Dictionary
       iex> Dictionary.word_count
-      57708
+      57712
   """
   @spec word_count :: pos_integer
   def word_count, do: Agent.get(WordsAgent, &length/1)
@@ -167,6 +167,28 @@ defmodule Hangman.Dictionary do
       |> Stream.filter(fn {_word, count} -> count > 1 end)
       |> Enum.sort_by(fn {word, count} -> {-count, word} end)
       |> Enum.map(fn {word, count} -> "#{word} (#{count})" end)
+    end)
+  end
+
+  @doc """
+  Returns all the words in the dictionary agent starting with `prefix`.
+
+  ## Examples
+
+      iex> alias Hangman.Dictionary
+      iex> Dictionary.words_starting_with("monster")
+      ["monster", "monsters"]
+
+      iex> alias Hangman.Dictionary
+      iex> Dictionary.words_starting_with("cock") |> Enum.take(3)
+      ["cock", "cockade", "cockaded"]
+  """
+  @spec words_starting_with(String.t()) :: [word]
+  def words_starting_with(prefix) do
+    Agent.get(WordsAgent, fn words ->
+      words
+      |> Stream.filter(&String.starts_with?(&1, prefix))
+      |> Enum.sort(:asc)
     end)
   end
 end
