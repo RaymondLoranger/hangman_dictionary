@@ -1,6 +1,6 @@
 defmodule Hangman.Dictionary.WordsAgent do
   @moduledoc """
-  An agent process that loads a list of words from external files.
+  An agent process that loads a list of words from configured external files.
   """
 
   use Agent
@@ -24,6 +24,12 @@ defmodule Hangman.Dictionary.WordsAgent do
   """
   @spec start_link(term) :: Agent.on_start()
   def start_link(_arg = :ok), do: Agent.start_link(&words/0, name: WordsAgent)
+
+  @doc """
+  Refreshes the agent state from the configured external files.
+  """
+  @spec refresh :: :ok
+  def refresh, do: Agent.update(WordsAgent, fn _state -> words() end)
 
   ## Private functions
 

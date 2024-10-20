@@ -14,7 +14,7 @@ defmodule Hangman.Dictionary do
   @type word :: String.t()
 
   @doc """
-  Returns a random word from the dictionary agent.
+  Returns a random word from the dictionary.
 
   ## Examples
 
@@ -33,19 +33,19 @@ defmodule Hangman.Dictionary do
   def random_word, do: Agent.get(WordsAgent, &Enum.random/1)
 
   @doc """
-  Returns the number of words in the dictionary agent.
+  Returns the number of words in the dictionary.
 
   ## Examples
 
       iex> alias Hangman.Dictionary
       iex> Dictionary.word_count
-      57712
+      57713
   """
   @spec word_count :: pos_integer
   def word_count, do: Agent.get(WordsAgent, &length/1)
 
   @doc """
-  Returns the shortest words in the dictionary agent (shorter than `ceil`).
+  Returns the shortest words in the dictionary (shorter than `ceil`).
 
   In iex, you may want to run:
 
@@ -71,7 +71,7 @@ defmodule Hangman.Dictionary do
   end
 
   @doc """
-  Returns the longest words in the dictionary agent (longer than `floor`).
+  Returns the longest words in the dictionary (longer than `floor`).
   Note that word lengths will be enclosed in parentheses after each word.
 
   In iex, you may want to run:
@@ -124,7 +124,7 @@ defmodule Hangman.Dictionary do
   end
 
   @doc """
-  Returns all the words in the dictionary agent of length `word_length`.
+  Returns all the words in the dictionary of length `word_length`.
 
   In iex, you may want to run:
 
@@ -150,7 +150,7 @@ defmodule Hangman.Dictionary do
   end
 
   @doc """
-  Returns all the repeated words in the dictionary agent.
+  Returns all the repeated words in the dictionary.
   Note that repetition counts will be enclosed in parentheses after each word.
 
   ## Examples
@@ -171,7 +171,7 @@ defmodule Hangman.Dictionary do
   end
 
   @doc """
-  Returns all the words in the dictionary agent starting with `prefix`.
+  Returns all the words in the dictionary starting with `prefix`.
 
   ## Examples
 
@@ -188,7 +188,13 @@ defmodule Hangman.Dictionary do
     Agent.get(WordsAgent, fn words ->
       words
       |> Stream.filter(&String.starts_with?(&1, prefix))
-      |> Enum.sort(:asc)
+      |> Enum.sort()
     end)
   end
+
+  @doc """
+  Refreshes the dictionary.
+  """
+  @spec refresh :: :ok
+  defdelegate refresh, to: WordsAgent
 end
