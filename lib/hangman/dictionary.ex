@@ -184,7 +184,7 @@ defmodule Hangman.Dictionary do
       ["cock", "cockade", "cockaded"]
   """
   @spec words_starting_with(String.t()) :: [word]
-  def words_starting_with(prefix) do
+  def words_starting_with(prefix) when is_binary(prefix) do
     Agent.get(WordsAgent, fn words ->
       words
       |> Stream.filter(&String.starts_with?(&1, prefix))
