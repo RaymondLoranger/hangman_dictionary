@@ -4,7 +4,7 @@ defmodule Hangman.Dictionary.Mixfile do
   def project do
     [
       app: :hangman_dictionary,
-      version: "0.1.46",
+      version: "0.1.47",
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
       name: "Hangman Dictionary",
@@ -27,13 +27,7 @@ defmodule Hangman.Dictionary.Mixfile do
 
   defp package do
     [
-      files: [
-        "lib",
-        "mix.exs",
-        "README*",
-        "config/persist*.exs",
-        "assets/**/*words*.txt"
-      ],
+      files: ~W[lib mix.exs README* config/persist*.exs assets/**/*words*.txt],
       maintainers: ["Raymond Loranger"],
       licenses: ["MIT"],
       links: %{"GitHub" => source_url()}

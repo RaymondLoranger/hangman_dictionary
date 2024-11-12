@@ -10,7 +10,7 @@ defmodule Hangman.Dictionary do
 
   alias __MODULE__.WordsAgent
 
-  @typedoc "A word with letters from a to z"
+  @typedoc "A word with letters from `a` to `z`"
   @type word :: String.t()
 
   @doc """
