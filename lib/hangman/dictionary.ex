@@ -54,7 +54,7 @@ defmodule Hangman.Dictionary do
   ## Examples
 
       iex> alias Hangman.Dictionary
-      iex> Dictionary.shortest_words() |> Enum.take(49) |> Enum.take(-10)
+      iex> Dictionary.shortest_words() |> Enum.slice(39, 10)
       ["act", "add", "ado", "ads", "adz", "aft", "age", "ago", "aid", "ail"]
 
       iex> alias Hangman.Dictionary
