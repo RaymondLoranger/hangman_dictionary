@@ -62,7 +62,7 @@ defmodule Hangman.Dictionary do
       ["a", "i"]
   """
   @spec shortest_words(pos_integer) :: [word]
-  def shortest_words(ceil \\ 5) do
+  def shortest_words(ceil \\ 5) when ceil >= 2 do
     Agent.get(WordsAgent, fn words ->
       words
       |> Stream.filter(&(byte_size(&1) < ceil))
@@ -114,7 +114,7 @@ defmodule Hangman.Dictionary do
       ]
   """
   @spec longest_words(non_neg_integer) :: [String.t()]
-  def longest_words(floor \\ 13) do
+  def longest_words(floor \\ 13) when floor >= 0 do
     Agent.get(WordsAgent, fn words ->
       words
       |> Stream.filter(&(byte_size(&1) > floor))
@@ -141,7 +141,7 @@ defmodule Hangman.Dictionary do
       ["ace", "act", "add", "ado", "ads", "adz", "aft", "age", "ago", "aid"]
   """
   @spec words_of_length(pos_integer) :: [word]
-  def words_of_length(word_length) do
+  def words_of_length(word_length) when word_length >= 1 do
     Agent.get(WordsAgent, fn words ->
       words
       |> Stream.filter(&(byte_size(&1) == word_length))
